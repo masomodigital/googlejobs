@@ -32,6 +32,47 @@
             margin: 5px auto; /* Reduced margin by 50% */
         }
 
+        table {
+            width: auto;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            color: darkgreen;
+        }
+
+        .earnings {
+            color: red;
+        }
+
+        button {
+            display: block;
+            margin: 10px auto; /* Center align the buttons */
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            color: white;
+        }
+
+        #loginBtn {
+            background-color: red;
+        }
+
+        #signUpBtn {
+            background-color: green;
+        }
+
         canvas {
             display: block;
             margin: 0 auto; /* Adjusted margin for the canvas */
@@ -44,6 +85,90 @@
         <img src="https://i.imgur.com/mwpTHJj.png" alt="Your Icon" width="100" height="100">
     </a>
     <p>Welcome to CBC DIGITAL! Enjoy unlimited access to CBC Digital Lessons, and make Unlimited Income by sharing the app!</p>
+
+    <!-- Earnings Table -->
+    <table id="earnings-table">
+        <tr>
+            <th>Name of Activator</th>
+            <th>No. of App Installations</th>
+            <th>Earnings Per Month</th>
+        </tr>
+    </table>
+
+    <!-- Member Login Button -->
+    <button id="loginBtn" onclick="redirectToMemberLogin()">MEMBER LOGIN</button>
+
+    <!-- New Member Sign Up Button -->
+    <button id="signUpBtn" onclick="redirectToNewMemberSignUp()">NEW MEMBER SIGN UP</button>
+
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script>
+        const activators = generateActivators(5);
+        let currentIndex = 0;
+
+        function generateActivators(count) {
+            const activatorList = [];
+            for (let i = 1; i <= count; i++) {
+                const name = generateRandomName();
+                const installations = getRandomNumber(300, 750);
+                activatorList.push({ name, installations });
+            }
+            return activatorList;
+        }
+
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function generateRandomName() {
+            const firstNames = ["Mercy", "Nancy", "Kennedy", "Lucas", "Dorris", "Aisha", "Adams", "Francis", "Kate", "Nyamweya", "Aisha", "Thabo", "Zanele"];
+            const lastNames = ["Wanjala", "Mutua", "Wafula", "Mwangi", "Karanja", "Were", "Kanake", "Koech", "Wambui", "Chakwera", "Manaseh", "Anyango"];
+
+            const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+            const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+
+            return `${randomFirstName} ${randomLastName}`;
+        }
+
+        function updateTable() {
+            const table = document.getElementById("earnings-table");
+
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+
+            const activator = activators[currentIndex];
+            const newRow = table.insertRow(1);
+            const nameCell = newRow.insertCell(0);
+            const installationsCell = newRow.insertCell(1);
+            const earningsCell = newRow.insertCell(2);
+
+            nameCell.textContent = activator.name;
+            installationsCell.textContent = activator.installations;
+            earningsCell.innerHTML = `<span class="earnings">Ksh. ${numberWithCommas(activator.installations * 100)}.00</span>`;
+
+            currentIndex = (currentIndex + 1) % activators.length;
+        }
+
+        function continuousUpdate() {
+            setInterval(() => {
+                updateTable();
+            }, 1000);
+        }
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function redirectToMemberLogin() {
+            window.location.href = 'https://marketer-logins.blogspot.com/';
+        }
+
+        function redirectToNewMemberSignUp() {
+            window.location.href = 'https://groups.google.com/my-groups';
+        }
+
+        continuousUpdate();
+    </script>
 </body>
 </html>
