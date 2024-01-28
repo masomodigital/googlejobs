@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,22 +8,17 @@
         body {
             text-align: center;
             margin: 0;
-        }
-
-        /* Ensure content is scrollable on small screens */
-        html, body {
-            height: 100%;
-            overflow: auto;
+            overflow: hidden; /* Ensure the canvas doesn't overflow */
         }
 
         h4 {
-            font-size: 1.2em;
-            margin: 5px auto;
+            font-size: 1.2em; /* Adjusted font size */
+            margin: 5px auto; /* Reduced margin by 50% */
         }
 
         a {
             display: block;
-            margin: 5px auto;
+            margin: 5px auto; /* Reduced margin by 50% */
         }
 
         img {
@@ -33,8 +27,8 @@
         }
 
         p {
-            font-size: 0.9em;
-            margin: 5px auto;
+            font-size: 0.9em; /* Adjusted font size */
+            margin: 5px auto; /* Reduced margin by 50% */
         }
 
         table {
@@ -59,7 +53,7 @@
 
         button {
             display: block;
-            margin: 10px auto;
+            margin: 10px auto; /* Center align the buttons */
             padding: 15px 30px;
             font-size: 16px;
             cursor: pointer;
@@ -80,23 +74,7 @@
 
         canvas {
             display: block;
-            margin: 0 auto;
-        }
-
-        /* New style for the text box */
-        #noteTextBox {
-            width: 80%;
-            margin: 20px auto;
-            padding: 10px;
-            background-color: black;
-            color: white;
-            text-align: justify;
-        }
-
-        /* Additional styles for longer content */
-        #additionalContent {
-            height: 1000px;
-            background-color: #f0f0f0;
+            margin: 0 auto; /* Adjusted margin for the canvas */
         }
     </style>
 </head>
@@ -105,7 +83,8 @@
     <a href="https://sites.google.com/view/cbcdigitaly/home">
         <img src="https://i.imgur.com/mwpTHJj.png" alt="Your Icon" width="100" height="100">
     </a>
-    <p>Welcome to Google Groups & CBC DIGITAL! Enjoy unlimited access to CBC Digital library, and make Unlimited Income by signing up new learners to the app!</p>
+    <p>Welcome to Google Groups & CBC DIGITAL! Enjoy unlimited access to CBC Digital library, and make Unlimited Income by signing up new learners to the app!
+  NB: There is no limit to the number of members or sign ups that a verified Google Group account holder can accommodate. Again, Google Groups or CBC Digital does NOT restrict or regulate the fee that an account holder charges for new group members. Every sign up via every Google account holder is granted access to CBC Digital and Life Transformers libraries.</p>
 
     <!-- Earnings Table -->
     <table id="earnings-table">
@@ -121,14 +100,6 @@
 
     <!-- New Member Sign Up Button -->
     <button id="signUpBtn" onclick="redirectToNewMemberSignUp()">NEW MEMBER SIGN UP</button>
-
-    <!-- New Text Box with specified text -->
-    <div id="noteTextBox">
-        NB: There is no limit to the number of members or sign-ups that a verified Google Group account holder can accommodate. Again, Google Groups or CBC Digital does NOT restrict or regulate the fee that an account holder charges for new group members. Every sign-up via every Google account holder is granted access to CBC Digital and Life Transformers libraries.
-    </div>
-
-    <!-- Additional content for longer page -->
-    <div id="additionalContent"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script>
