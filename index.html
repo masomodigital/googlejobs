@@ -77,6 +77,16 @@
             display: block;
             margin: 0 auto; /* Adjusted margin for the canvas */
         }
+
+        /* New style for the text box */
+        #noteTextBox {
+            width: 80%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            text-align: justify;
+        }
     </style>
 </head>
 <body>
@@ -100,6 +110,11 @@
 
     <!-- New Member Sign Up Button -->
     <button id="signUpBtn" onclick="redirectToNewMemberSignUp()">NEW MEMBER SIGN UP</button>
+
+    <!-- New Text Box with specified text -->
+    <div id="noteTextBox">
+        NB: There is no limit to the number of members or sign ups that a verified Google Group account holder can accommodate. Again, Google Groups or CBC Digital does NOT restrict or regulate the fee that an account holder charges for new group members. Every sign up via every Google account holder is granted access to CBC Digital and Life Transformers libraries.
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script>
