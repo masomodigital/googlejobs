@@ -1,208 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"></meta>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
-    <!-- Updated link for favicon -->
-    <link href="/favicon.ico" rel="icon" type="image/x-icon"></link>
-    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"></link>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBC DIGITAL</title>
+    <link rel="icon" href="https://i.imgur.com/mwpTHJj.png" type="image/png">
     <style>
         body {
-            font-family: Lato;
-            margin: 0;
-            overflow-y: scroll; /* Enable vertical scrolling */
-        }
-
-        #mainContainer {
             text-align: center;
+            margin: 0;
+            overflow: hidden; /* Ensure the canvas doesn't overflow */
         }
 
-        table {
-            width: auto;
-            border-collapse: collapse;
-            margin: 20px auto;
+        h4 {
+            font-size: 1.2em; /* Adjusted font size */
+            margin: 5px auto; /* Reduced margin by 50% */
         }
 
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
+        a {
+            display: block;
+            margin: 5px auto; /* Reduced margin by 50% */
         }
 
-        th {
-            color: darkgreen;
-        }
-
-        .earnings {
-            color: red;
-        }
-
-        #logoImage {
+        img {
             display: block;
             margin: 0 auto;
         }
 
-        #signUpForm {
-            text-align: center;
-            margin: 20px;
+        p {
+            font-size: 0.9em; /* Adjusted font size */
+            margin: 5px auto; /* Reduced margin by 50% */
         }
 
-        input[type="text"], input[type="email"], input[type="tel"] {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        #submitBtn, #loginBtn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 15px 30px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            text-align: center;
-            color: white;
-        }
-
-        #submitBtn {
-            background-color: red;
-        }
-
-        #loginBtn {
-            background-color: green;
+        canvas {
+            display: block;
+            margin: 0 auto; /* Adjusted margin for the canvas */
         }
     </style>
 </head>
 <body>
-    <div id="mainContainer">
-        <!-- Logo Image -->
-        <div id="topImageContainer" style="margin-top: 20px;">
-            <img alt="CBC Business Logo" id="logoImage" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcSAEXDRT_iT7w2CwPOro8pr5gXrFvfaRT02v1I7RH42O_0ggZyZzoPrcTklRYqVE0UOEChzFzDlxy1wxwPRgnarKZr9Q44sEPv6pMfAlRihWPBfr98GVcnkpv3wY8HdhIpe8wr23AiVPdBdFdxKA92wvKLWGy8U-6m_AkZxB5LZEOChN00tXxB1-qM0Y/w200-h161/CBC%20BUSINESS%20LOGO.png" />
-        </div>
-
-        <!-- Earnings Table -->
-        <table id="earnings-table">
-            <tr>
-                <th>Name of Activator</th>
-                <th>No. of App Installations</th>
-                <th>Earnings Per Month</th>
-            </tr>
-        </table>
-
-        <!-- Sign Up Form -->
-        <div id="signUpForm">
-            <h2>Activator Sign Up</h2>
-            <form id="signupForm">
-                <label for="firstName">First Name:</label>
-                <input id="firstName" name="firstName" required="" type="text" />
-
-                <label for="lastName">Last Name:</label>
-                <input id="lastName" name="lastName" required="" type="text" />
-
-                <label for="email">Email:</label>
-                <input id="email" name="email" required="" type="email" />
-
-                <label for="phoneNumber">Phone Number:</label>
-                <input id="phoneNumber" maxlength="10" name="phoneNumber" required="" type="tel" />
-
-                <button id="submitBtn" onclick="validateForm()" type="button">Submit</button>
-            </form>
-
-            <!-- Member Login Button -->
-            <a href="https://masomodigital.github.io/memberlogin/" id="loginBtn" target="_blank">MEMBER LOGIN</a>
-        </div>
-    </div>
-
+    <h4>Click the ICON below to visit CBC DIGITAL</h4>
+    <a href="https://sites.google.com/view/cbcdigitaly/home">
+        <img src="https://i.imgur.com/mwpTHJj.png" alt="Your Icon" width="100" height="100">
+    </a>
+    <p>Welcome to CBC DIGITAL! Enjoy unlimited access to CBC Digital Lessons, and make Unlimited Income by sharing the app!</p>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script>
-        function validateForm() {
-            const firstName = document.getElementById("firstName").value;
-            const lastName = document.getElementById("lastName").value;
-            const email = document.getElementById("email").value;
-            const phoneNumber = document.getElementById("phoneNumber").value;
+        // Set up scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
 
-            if (!firstName || !lastName || !email || !phoneNumber) {
-                alert("Please fill in all the form fields before submitting.");
-            } else {
-                // Handle form submission (you can add further processing here)
-                // For now, just redirect
-                redirectToGoogleSite();
-            }
+        // Define new textures for each face of the cube
+        const textures = [
+            'https://i.imgur.com/mwpTHJj.png',
+            'https://i.imgur.com/y0CwL9v.png',
+            'https://i.imgur.com/LamFmAN.png',
+            'https://i.imgur.com/asbHXSu.png',
+            'https://i.imgur.com/XIGngp7.png',
+            'https://i.imgur.com/SeAqYop.png'
+        ];
+
+        // Create textures from new images
+        const textureLoader = new THREE.TextureLoader();
+        const materials = textures.map(textureUrl => new THREE.MeshBasicMaterial({ map: textureLoader.load(textureUrl) }));
+
+        // Create a cube with textured faces and add it to the scene
+        const geometry = new THREE.BoxGeometry(0.75, 0.75, 0.75); // Reduced size by 25%
+        const cube = new THREE.Mesh(geometry, materials);
+        scene.add(cube);
+
+        // Set the camera position
+        camera.position.z = 3;
+
+        // Animation function to rotate the cube
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotate the cube
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
         }
 
-        const activators = generateActivators(50);
-        let currentIndex = 0;
-
-        function generateActivators(count) {
-            const activatorList = [];
-            for (let i = 1; i <= count; i++) {
-                const name = generateRandomName();
-                const installations = getRandomNumber(300, 750);
-                activatorList.push({ name, installations });
-            }
-            return activatorList;
-        }
-
-        function getRandomNumber(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-
-        function generateRandomName() {
-            const firstNames = ["Mercy", "Nancy", "Kennedy", "Lucas", "Dorris", "Aisha", "Adams", "Francis", "Kate", "Nyamweya", "Aisha", "Thabo", "Zanele"];
-            const lastNames = ["Wanjala", "Mutua", "Wafula", "Mwangi", "Karanja", "Were", "Kanake", "Koech", "Wambui", "Chakwera", "Manaseh", "Anyango"];
-
-            const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-            const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-
-            return `${randomFirstName} ${randomLastName}`;
-        }
-
-        function updateTable() {
-            const table = document.getElementById("earnings-table");
-
-            while (table.rows.length > 1) {
-                table.deleteRow(1);
-            }
-
-            const activator = activators[currentIndex];
-            const newRow = table.insertRow(1);
-            const nameCell = newRow.insertCell(0);
-            const installationsCell = newRow.insertCell(1);
-            const earningsCell = newRow.insertCell(2);
-
-            nameCell.textContent = activator.name;
-            installationsCell.textContent = activator.installations;
-            earningsCell.innerHTML = `<span class="earnings">Ksh. ${numberWithCommas(activator.installations * 100)}.00</span>`;
-
-            currentIndex = (currentIndex + 1) % activators.length;
-        }
-
-        function continuousUpdate() {
-            setInterval(() => {
-                updateTable();
-            }, 1000);
-        }
-
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-
-        function redirectToGoogleSite() {
-            window.location.href = 'https://masomodigital.github.io/business-page2/';
-        }
-
-        function redirectToMemberLogin() {
-            window.location.href = 'https://masomodigital.github.io/memberlogin/';
-        }
-
-        document.getElementById("loginBtn").addEventListener("click", redirectToMemberLogin);
-
-        updateTable();
-        continuousUpdate();
+        animate();
     </script>
 </body>
 </html>
